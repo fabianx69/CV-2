@@ -1,71 +1,495 @@
-<!-- Tarjeta principal en 1 sola vista -->
-    <main id="main-container" class="resume-card">
-        
-        <!-- Contenedor de las dos columnas superiores -->
-        <div class="resume-body-columns">
-            <!-- COLUMNA IZQUIERDA -->
-            <aside class="col-left">
-                <header class="resume-header">
-                    <h1>FABIÁN ENRIQUE URRUTIA PALMA</h1>
-                    <p id="title-tag" class="role-badge"></p>
-                    <address class="contact-list">
-                        <span>Santiago, Chile</span>
-                        <a href="mailto:fabianenriqueurrutiap@gmail.com">fabianenriqueurrutiap@gmail.com</a>
-                        <a href="tel:+56992200739">+56 9 9220 0739</a>
-                        <a href="https://fabianx69.github.io/CV-profesional/">Portafolio web</a>
-                    </address>
-                </header>
+:root {
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --slate-50: #f8fafc;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+    --white: #ffffff;
+    --shadow: 0 12px 35px rgb(15 23 42 / 0.08);
+}
 
-                <section class="resume-section" aria-labelledby="lbl-profile">
-                    <h2 class="section-title" id="lbl-profile"></h2>
-                    <p id="val-profile" class="profile-text"></p>
-                </section>
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-                <section class="resume-section" aria-labelledby="lbl-edu">
-                    <h2 class="section-title" id="lbl-edu"></h2>
-                    <div id="val-edu" class="education-content"></div>
-                </section>
+/* =========================================
+   BASE GLOBAL Y TEXT-SIZE-ADJUST
+   ========================================= */
+html {
+    background-color: var(--slate-50);
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Letra base grande y nítida */
+    font-size: 15px;
+}
 
-                <section class="resume-section" aria-labelledby="lbl-langs">
-                    <h2 class="section-title" id="lbl-langs"></h2>
-                    <div id="val-langs" class="languages-grid"></div>
-                </section>
-            </aside>
+body {
+    margin: 0;
+    background-color: var(--slate-50);
+    color: var(--slate-900);
+    /* Stack nativo multiplataforma (iOS, macOS, Windows, Android, HarmonyOS) */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.38;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
 
-            <!-- COLUMNA DERECHA -->
-            <section class="col-right">
-                <div class="resume-section" aria-labelledby="lbl-exp">
-                    <h2 class="section-title" id="lbl-exp"></h2>
-                    <div id="val-exp" class="experience-content"></div>
-                </div>
+/* =========================================
+   BARRA DE IDIOMAS
+   ========================================= */
+.language-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    padding: 0.35rem 0.75rem;
+    border-bottom: 1px solid var(--slate-200);
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
 
-                <div class="resume-section" aria-labelledby="lbl-projs">
-                    <h2 class="section-title" id="lbl-projs"></h2>
-                    <div id="val-projs" class="projects-list"></div>
-                </div>
-            </section>
-        </div>
+.language-nav__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 105rem;
+    margin: 0 auto;
+    gap: 0.3rem 0.5rem;
+}
 
-        <!-- SECCIÓN INFERIOR -->
-        <footer class="col-bottom">
-            <section class="bottom-skills" aria-labelledby="lbl-skills">
-                <h2 class="section-title" id="lbl-skills"></h2>
-                <div id="val-skills" class="skills-grid"></div>
-            </section>
+.language-nav__separator {
+    margin: 0 0.15rem;
+    color: var(--slate-400);
+}
 
-            <section class="bottom-certs" aria-labelledby="lbl-certs">
-                <div class="certs-header-row">
-                    <h2 class="section-title" id="lbl-certs"></h2>
-                    <a id="certs-link"
-                       class="primary-link"
-                       href="https://drive.google.com/drive/folders/1aTAoiuF45wiqF9LQGXATr0hYDVl1PITS?usp=sharing"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        <span id="lbl-certs-link"></span>
-                        <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-                <div id="val-certs" class="certifications-list"></div>
-            </section>
-        </footer>
-    </main>
+.lang-button {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0.2rem 0.45rem;
+    border: 0;
+    border-radius: 0.3rem;
+    background: transparent;
+    color: var(--slate-600);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.lang-button:hover,
+.lang-button.is-active {
+    background-color: var(--blue-50);
+    color: var(--blue-700);
+}
+
+/* =========================================
+   DISEÑO EN ESCRITORIO (PC / LAPTOP)
+   1 Sola pantalla exacta, sin scroll, ocupando todo el ancho
+   ========================================= */
+@media (min-width: 901px) {
+    html {
+        /* Se adapta suavemente entre 14.5px y 16.5px según el ancho del monitor */
+        font-size: clamp(14px, 0.65rem + 0.55vw, 16.5px);
+    }
+
+    body {
+        height: 100vh;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; /* Cero scroll en PC */
+    }
+
+    .resume-card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* Ocupa el 96% del ancho disponible para que no queden franjas vacías */
+        width: 96vw;
+        max-width: 105rem;
+        margin: 0.35rem auto;
+        padding: clamp(0.7rem, 1.2vh, 1.3rem) clamp(1.2rem, 2vw, 2.2rem);
+        border: 1px solid var(--slate-200);
+        border-radius: 0.85rem;
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+    }
+
+    .resume-top-grid {
+        display: grid;
+        grid-template-columns: 33% 67%;
+        column-gap: clamp(1.5rem, 2.5vw, 3rem);
+        align-items: start;
+        flex: 1;
+    }
+
+    .col-left {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.35rem, 0.8vh, 0.75rem);
+        border-right: 1px solid var(--slate-200);
+        padding-right: clamp(1.2rem, 1.8vw, 2.2rem);
+    }
+
+    .col-right {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.45rem, 1vh, 0.9rem);
+    }
+
+    .col-bottom {
+        display: grid;
+        grid-template-columns: 48% 50%;
+        gap: clamp(1.5rem, 2.5vw, 3rem);
+        padding-top: clamp(0.35rem, 0.7vh, 0.7rem);
+        border-top: 1px solid var(--slate-200);
+        flex-shrink: 0;
+    }
+}
+
+/* =========================================
+   ELEMENTOS INTERNOS Y TIPOGRAFÍA
+   ========================================= */
+.resume-header h1 {
+    margin: 0;
+    color: var(--slate-900);
+    font-size: 1.45rem;
+    font-weight: 850;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+
+.role-badge {
+    display: inline-block;
+    margin: 0.25rem 0 0.35rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--blue-50);
+    color: var(--blue-700);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    font-style: normal;
+    font-size: 0.82rem;
+    color: var(--slate-600);
+}
+
+.contact-list a {
+    color: inherit;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.contact-list a:hover {
+    color: var(--blue-600);
+    text-decoration: underline;
+}
+
+.section-title {
+    margin: 0 0 0.25rem;
+    padding-left: 0.5rem;
+    border-left: 3.5px solid var(--blue-600);
+    color: var(--slate-800);
+    font-size: 0.85rem;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.profile-text {
+    margin: 0;
+    color: var(--slate-600);
+    font-size: 0.82rem;
+    line-height: 1.38;
+    text-align: justify;
+}
+
+.education-content {
+    color: var(--slate-700);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.education-content strong {
+    color: var(--slate-900);
+}
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.language-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0.28rem 0.55rem;
+    border: 1px solid var(--slate-200);
+    border-radius: 0.35rem;
+    background-color: var(--slate-50);
+}
+
+.language-name {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--slate-800);
+}
+
+.language-level {
+    margin: 0.05rem 0 0;
+    font-size: 0.74rem;
+    color: var(--blue-700);
+    font-weight: 600;
+}
+
+.experience-content {
+    color: var(--slate-700);
+    font-size: 0.82rem;
+}
+
+.experience-meta {
+    font-size: 0.76rem;
+    color: var(--slate-500);
+    font-weight: 500;
+}
+
+.experience-list {
+    margin: 0.25rem 0 0;
+    padding-left: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.experience-list li {
+    line-height: 1.34;
+}
+
+.experience-secondary {
+    margin-top: 0.35rem;
+    padding-top: 0.25rem;
+    border-top: 1px dashed var(--slate-200);
+}
+
+.experience-summary {
+    margin: 0.1rem 0 0;
+    color: var(--slate-600);
+    font-size: 0.8rem;
+    line-height: 1.32;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.project-title {
+    margin: 0;
+    font-size: 0.84rem;
+    font-weight: 750;
+    color: var(--blue-700);
+}
+
+.project-description {
+    margin: 0.05rem 0 0;
+    font-size: 0.8rem;
+    color: var(--slate-600);
+    line-height: 1.34;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem 0.85rem;
+}
+
+.skill-category {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--slate-800);
+    text-transform: uppercase;
+}
+
+.skill-text {
+    margin: 0.05rem 0 0;
+    font-size: 0.78rem;
+    color: var(--slate-600);
+    line-height: 1.25;
+}
+
+.certs-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.certs-header-row .section-title {
+    margin: 0;
+}
+
+.certifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cert-group-title {
+    margin: 0 0 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 750;
+    color: var(--blue-700);
+    text-transform: uppercase;
+}
+
+.cert-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.cert-badge {
+    padding: 0.15rem 0.4rem;
+    border: 1px solid var(--slate-200);
+    border-radius: 0.3rem;
+    background-color: var(--slate-50);
+    color: var(--slate-700);
+    font-size: 0.72rem;
+    font-weight: 550;
+}
+
+.primary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.22rem 0.6rem;
+    border-radius: 0.35rem;
+    background-color: var(--blue-600);
+    color: var(--white);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+}
+
+.primary-link:hover {
+    background-color: var(--blue-700);
+}
+
+/* =========================================
+   DISEÑO EN MÓVILES (iOS / Android / HarmonyOS)
+   ========================================= */
+@media (max-width: 900px) {
+    html {
+        font-size: 15px; /* Tamaño legible en pantallas de teléfono */
+    }
+
+    body {
+        height: auto;
+        overflow-y: auto; /* Permite scroll fluido con el dedo */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .resume-card {
+        width: calc(100% - 1.2rem);
+        margin: 0.75rem auto 2rem;
+        padding: 1.25rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--slate-200);
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+    }
+
+    .resume-top-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .col-left {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--slate-200);
+        padding-bottom: 1.25rem;
+        gap: 1rem;
+    }
+
+    .col-right {
+        gap: 1.25rem;
+    }
+
+    .col-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--slate-200);
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .profile-text {
+        text-align: left;
+    }
+}
+
+/* =========================================
+   IMPRESIÓN (1 HOJA FÍSICA)
+   ========================================= */
+@media print {
+    @page {
+        size: letter portrait;
+        margin: 6mm 7mm;
+    }
+    
+    html {
+        font-size: 11px;
+    }
+
+    body {
+        height: auto;
+        overflow: visible;
+        background-color: var(--white);
+    }
+
+    .language-nav {
+        display: none !important;
+    }
+
+    .resume-card {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
