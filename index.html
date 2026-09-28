@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests;">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="CV profesional de Fabián Urrutia, profesional de Ingeniería en Informática y Analista Programador con experiencia en desarrollo full stack, automatización, Power BI, IA generativa, cloud, soporte TI y telecomunicaciones.">
+    <meta name="description" content="CV profesional de Fabián Urrutia, Ingeniería en Informática y Analista Programador.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Fabián Urrutia | Ingeniería en Informática">
     <meta property="og:description" content="Desarrollo full stack, automatización, Power BI, IA generativa, cloud y soporte TI.">
@@ -18,6 +18,7 @@
     <title>Fabián Urrutia | Ingeniería en Informática</title>
 </head>
 <body>
+    <!-- Barra de idiomas superior -->
     <nav class="language-nav" aria-label="Selector de idioma">
         <div class="language-nav__inner">
             <button type="button" class="lang-button is-active" data-lang="es" aria-pressed="true">ESP</button>
@@ -33,66 +34,72 @@
         </div>
     </nav>
 
+    <!-- Tarjeta principal en 1 sola vista -->
     <main id="main-container" class="resume-card">
-        <header class="resume-header">
-            <h1>FABIÁN ENRIQUE URRUTIA PALMA</h1>
-            <address class="contact-list">
-                <span>Santiago, Chile</span>
-                <span aria-hidden="true">|</span>
-                <a href="mailto:fabianenriqueurrutiap@gmail.com">fabianenriqueurrutiap@gmail.com</a>
-                <span aria-hidden="true">|</span>
-                <a href="tel:+56992200739">+56 9 9220 0739</a>
-                <span aria-hidden="true">|</span>
-                <a href="https://fabianx69.github.io/CV-profesional/">Portafolio profesional</a>
-            </address>
-            <p id="title-tag" class="role-badge"></p>
-        </header>
+        
+        <!-- COLUMNA IZQUIERDA: Identidad, Perfil, Educación, Idiomas -->
+        <aside class="col-left">
+            <header class="resume-header">
+                <h1>FABIÁN ENRIQUE URRUTIA PALMA</h1>
+                <p id="title-tag" class="role-badge"></p>
+                <address class="contact-list">
+                    <span>Santiago, Chile</span>
+                    <a href="mailto:fabianenriqueurrutiap@gmail.com">fabianenriqueurrutiap@gmail.com</a>
+                    <a href="tel:+56992200739">+56 9 9220 0739</a>
+                    <a href="https://fabianx69.github.io/CV-profesional/">Portafolio web</a>
+                </address>
+            </header>
 
-        <section class="resume-section" aria-labelledby="lbl-profile">
-            <h2 class="section-title" id="lbl-profile"></h2>
-            <p id="val-profile" class="profile-text"></p>
+            <section class="resume-section" aria-labelledby="lbl-profile">
+                <h2 class="section-title" id="lbl-profile"></h2>
+                <p id="val-profile" class="profile-text"></p>
+            </section>
+
+            <section class="resume-section" aria-labelledby="lbl-edu">
+                <h2 class="section-title" id="lbl-edu"></h2>
+                <div id="val-edu" class="education-content"></div>
+            </section>
+
+            <section class="resume-section" aria-labelledby="lbl-langs">
+                <h2 class="section-title" id="lbl-langs"></h2>
+                <div id="val-langs" class="languages-grid"></div>
+            </section>
+        </aside>
+
+        <!-- COLUMNA DERECHA: Experiencia y Proyectos -->
+        <section class="col-right">
+            <div class="resume-section" aria-labelledby="lbl-exp">
+                <h2 class="section-title" id="lbl-exp"></h2>
+                <div id="val-exp" class="experience-content"></div>
+            </div>
+
+            <div class="resume-section" aria-labelledby="lbl-projs">
+                <h2 class="section-title" id="lbl-projs"></h2>
+                <div id="val-projs" class="projects-list"></div>
+            </div>
         </section>
 
-        <section class="resume-section" aria-labelledby="lbl-exp">
-            <h2 class="section-title" id="lbl-exp"></h2>
-            <div id="val-exp" class="experience-content"></div>
-        </section>
+        <!-- SECCIÓN INFERIOR: Habilidades, Certificados y Link -->
+        <footer class="col-bottom">
+            <section class="bottom-skills" aria-labelledby="lbl-skills">
+                <h2 class="section-title" id="lbl-skills"></h2>
+                <div id="val-skills" class="skills-grid"></div>
+            </section>
 
-        <section class="resume-section" aria-labelledby="lbl-skills">
-            <h2 class="section-title" id="lbl-skills"></h2>
-            <div id="val-skills" class="skills-grid"></div>
-        </section>
-
-        <section class="resume-section" aria-labelledby="lbl-projs">
-            <h2 class="section-title" id="lbl-projs"></h2>
-            <div id="val-projs" class="projects-list"></div>
-        </section>
-
-        <section class="resume-section" aria-labelledby="lbl-edu">
-            <h2 class="section-title" id="lbl-edu"></h2>
-            <div id="val-edu" class="education-content"></div>
-        </section>
-
-        <section class="resume-section" aria-labelledby="lbl-langs">
-            <h2 class="section-title" id="lbl-langs"></h2>
-            <div id="val-langs" class="languages-grid"></div>
-        </section>
-
-        <section class="resume-section resume-section--last" aria-labelledby="lbl-certs">
-            <h2 class="section-title" id="lbl-certs"></h2>
-            <div id="val-certs" class="certifications-list"></div>
-            <a id="certs-link"
-               class="primary-link"
-               href="https://drive.google.com/drive/folders/1aTAoiuF45wiqF9LQGXATr0hYDVl1PITS?usp=sharing"
-               target="_blank"
-               rel="noopener noreferrer">
-                <span id="lbl-certs-link"></span>
-                <span aria-hidden="true">↗</span>
-            </a>
-        </section>
-
-        <footer class="resume-footer">
-            <p>&copy; 2026 Fabián Urrutia | Currículum profesional</p>
+            <section class="bottom-certs" aria-labelledby="lbl-certs">
+                <div class="certs-header-row">
+                    <h2 class="section-title" id="lbl-certs"></h2>
+                    <a id="certs-link"
+                       class="primary-link"
+                       href="https://drive.google.com/drive/folders/1aTAoiuF45wiqF9LQGXATr0hYDVl1PITS?usp=sharing"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <span id="lbl-certs-link"></span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
+                <div id="val-certs" class="certifications-list"></div>
+            </section>
         </footer>
     </main>
 </body>
