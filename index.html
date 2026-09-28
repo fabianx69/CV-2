@@ -11,13 +11,15 @@
     <meta property="og:description" content="Desarrollo full stack, automatización, Power BI, IA generativa, cloud y soporte TI.">
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://fabianx69.github.io/CV-profesional/">
-    <!-- Agregamos versión ?v=3 para forzar a Safari/Chrome a no usar caché vieja -->
-    <link rel="stylesheet" href="styles.css?v=3">
-    <script src="translations.js?v=3" defer></script>
-    <script src="app.js?v=3" defer></script>
+    <!-- Parámetro ?v=5 para evitar problemas de caché en iPhone/Android -->
+    <link rel="stylesheet" href="styles.css?v=5">
+    <script src="translations.js?v=5" defer></script>
+    <script src="app.js?v=5" defer></script>
     <title>Fabián Urrutia | Ingeniería en Informática</title>
 </head>
-<body>
+<body class="cv-layout">
+
+    <!-- SELECTOR DE IDIOMAS (Arriba en PC / Columna izquierda 'espalda de la E' en Móvil) -->
     <nav class="language-nav" aria-label="Selector de idioma">
         <div class="language-nav__inner">
             <button type="button" class="lang-button is-active" data-lang="es" aria-pressed="true">ESP</button>
@@ -33,59 +35,63 @@
         </div>
     </nav>
 
+    <!-- CUERPO PRINCIPAL (En móvil son los 3 brazos de la letra E) -->
     <main id="main-container" class="resume-card">
-        <div class="resume-top-grid">
-            <!-- COLUMNA IZQUIERDA -->
-            <aside class="col-left">
-                <header class="resume-header">
-                    <h1>FABIÁN ENRIQUE URRUTIA PALMA</h1>
-                    <p id="title-tag" class="role-badge"></p>
-                    <address class="contact-list">
-                        <span>Santiago, Chile</span>
-                        <a href="mailto:fabianenriqueurrutiap@gmail.com">fabianenriqueurrutiap@gmail.com</a>
-                        <a href="tel:+56992200739">+56 9 9220 0739</a>
-                        <a href="https://fabianx69.github.io/CV-profesional/">Portafolio web</a>
-                    </address>
-                </header>
+        
+        <!-- BRAZO 1 DE LA 'E' (Superior en móvil / Columna izquierda superior en PC) -->
+        <section class="arm-top">
+            <header class="resume-header">
+                <h1>FABIÁN ENRIQUE URRUTIA PALMA</h1>
+                <p id="title-tag" class="role-badge"></p>
+                <address class="contact-list">
+                    <span>Santiago, Chile</span>
+                    <span class="sep-dot">•</span>
+                    <a href="mailto:fabianenriqueurrutiap@gmail.com">fabianenriqueurrutiap@gmail.com</a>
+                    <span class="sep-dot">•</span>
+                    <a href="tel:+56992200739">+56 9 9220 0739</a>
+                    <span class="sep-dot">•</span>
+                    <a href="https://fabianx69.github.io/CV-profesional/">Portafolio web</a>
+                </address>
+            </header>
 
-                <section class="resume-section" aria-labelledby="lbl-profile">
-                    <h2 class="section-title" id="lbl-profile"></h2>
-                    <p id="val-profile" class="profile-text"></p>
-                </section>
+            <div class="profile-block">
+                <h2 class="section-title" id="lbl-profile"></h2>
+                <p id="val-profile" class="profile-text"></p>
+            </div>
 
-                <section class="resume-section" aria-labelledby="lbl-edu">
+            <div class="edu-lang-block">
+                <div class="edu-sub">
                     <h2 class="section-title" id="lbl-edu"></h2>
                     <div id="val-edu" class="education-content"></div>
-                </section>
-
-                <section class="resume-section" aria-labelledby="lbl-langs">
+                </div>
+                <div class="lang-sub">
                     <h2 class="section-title" id="lbl-langs"></h2>
                     <div id="val-langs" class="languages-grid"></div>
-                </section>
-            </aside>
-
-            <!-- COLUMNA DERECHA -->
-            <section class="col-right">
-                <div class="resume-section" aria-labelledby="lbl-exp">
-                    <h2 class="section-title" id="lbl-exp"></h2>
-                    <div id="val-exp" class="experience-content"></div>
                 </div>
+            </div>
+        </section>
 
-                <div class="resume-section" aria-labelledby="lbl-projs">
-                    <h2 class="section-title" id="lbl-projs"></h2>
-                    <div id="val-projs" class="projects-list"></div>
-                </div>
-            </section>
-        </div>
+        <!-- BRAZO 2 DE LA 'E' (Medio en móvil / Columna derecha en PC) -->
+        <section class="arm-middle">
+            <div class="exp-block">
+                <h2 class="section-title" id="lbl-exp"></h2>
+                <div id="val-exp" class="experience-content"></div>
+            </div>
 
-        <!-- SECCIÓN INFERIOR: Habilidades y Certificaciones -->
-        <footer class="col-bottom">
-            <section class="bottom-skills" aria-labelledby="lbl-skills">
+            <div class="projs-block">
+                <h2 class="section-title" id="lbl-projs"></h2>
+                <div id="val-projs" class="projects-list"></div>
+            </div>
+        </section>
+
+        <!-- BRAZO 3 DE LA 'E' (Inferior en móvil y PC) -->
+        <footer class="arm-bottom">
+            <div class="skills-block">
                 <h2 class="section-title" id="lbl-skills"></h2>
                 <div id="val-skills" class="skills-grid"></div>
-            </section>
+            </div>
 
-            <section class="bottom-certs" aria-labelledby="lbl-certs">
+            <div class="certs-block">
                 <div class="certs-header-row">
                     <h2 class="section-title" id="lbl-certs"></h2>
                     <a id="certs-link"
@@ -98,7 +104,7 @@
                     </a>
                 </div>
                 <div id="val-certs" class="certifications-list"></div>
-            </section>
+            </div>
         </footer>
     </main>
 </body>
