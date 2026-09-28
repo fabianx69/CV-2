@@ -1,464 +1,71 @@
-:root {
-    --blue-50: #eff6ff;
-    --blue-100: #dbeafe;
-    --blue-600: #2563eb;
-    --blue-700: #1d4ed8;
-    --slate-50: #f8fafc;
-    --slate-200: #e2e8f0;
-    --slate-400: #94a3b8;
-    --slate-500: #64748b;
-    --slate-600: #475569;
-    --slate-700: #334155;
-    --slate-800: #1e293b;
-    --slate-900: #0f172a;
-    --white: #ffffff;
-    --shadow: 0 10px 30px rgb(15 23 42 / 0.08);
-}
+<!-- Tarjeta principal en 1 sola vista -->
+    <main id="main-container" class="resume-card">
+        
+        <!-- Contenedor de las dos columnas superiores -->
+        <div class="resume-body-columns">
+            <!-- COLUMNA IZQUIERDA -->
+            <aside class="col-left">
+                <header class="resume-header">
+                    <h1>FABIÁN ENRIQUE URRUTIA PALMA</h1>
+                    <p id="title-tag" class="role-badge"></p>
+                    <address class="contact-list">
+                        <span>Santiago, Chile</span>
+                        <a href="mailto:fabianenriqueurrutiap@gmail.com">fabianenriqueurrutiap@gmail.com</a>
+                        <a href="tel:+56992200739">+56 9 9220 0739</a>
+                        <a href="https://fabianx69.github.io/CV-profesional/">Portafolio web</a>
+                    </address>
+                </header>
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+                <section class="resume-section" aria-labelledby="lbl-profile">
+                    <h2 class="section-title" id="lbl-profile"></h2>
+                    <p id="val-profile" class="profile-text"></p>
+                </section>
 
-/* Control estricto de auto-escalado en iOS, Android, HarmonyOS */
-html {
-    background: var(--slate-50);
-    color-scheme: light;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    /* Tipografía fluida 2 puntos menor y proporcional a ancho/alto (vmin) */
-    font-size: clamp(11.5px, 0.55rem + 0.65vmin, 14px);
-}
+                <section class="resume-section" aria-labelledby="lbl-edu">
+                    <h2 class="section-title" id="lbl-edu"></h2>
+                    <div id="val-edu" class="education-content"></div>
+                </section>
 
-body {
-    min-height: 100vh;
-    margin: 0;
-    background: var(--slate-50);
-    color: var(--slate-900);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.35;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
+                <section class="resume-section" aria-labelledby="lbl-langs">
+                    <h2 class="section-title" id="lbl-langs"></h2>
+                    <div id="val-langs" class="languages-grid"></div>
+                </section>
+            </aside>
 
-/* =========================================
-   BARRA DE IDIOMAS (STICKY & ULTRA COMPACTA)
-   ========================================= */
-.language-nav {
-    position: sticky;
-    top: 0;
-    z-index: 30;
-    padding: 0.25rem 0.5rem;
-    border-bottom: 1px solid var(--slate-200);
-    background: rgb(255 255 255 / 0.94);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
+            <!-- COLUMNA DERECHA -->
+            <section class="col-right">
+                <div class="resume-section" aria-labelledby="lbl-exp">
+                    <h2 class="section-title" id="lbl-exp"></h2>
+                    <div id="val-exp" class="experience-content"></div>
+                </div>
 
-.language-nav__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-width: 82rem;
-    margin: 0 auto;
-    gap: 0.2rem 0.35rem;
-}
+                <div class="resume-section" aria-labelledby="lbl-projs">
+                    <h2 class="section-title" id="lbl-projs"></h2>
+                    <div id="val-projs" class="projects-list"></div>
+                </div>
+            </section>
+        </div>
 
-.language-nav__separator {
-    margin: 0 0.15rem;
-    color: var(--slate-400);
-}
+        <!-- SECCIÓN INFERIOR -->
+        <footer class="col-bottom">
+            <section class="bottom-skills" aria-labelledby="lbl-skills">
+                <h2 class="section-title" id="lbl-skills"></h2>
+                <div id="val-skills" class="skills-grid"></div>
+            </section>
 
-.lang-button {
-    appearance: none;
-    padding: 0.15rem 0.35rem;
-    border: 0;
-    border-radius: 0.25rem;
-    background: transparent;
-    color: var(--slate-600);
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    transition: background-color 150ms ease, color 150ms ease;
-}
-
-.lang-button:hover,
-.lang-button.is-active {
-    background: var(--blue-50);
-    color: var(--blue-700);
-}
-
-/* =========================================
-   TARJETA PRINCIPAL (1 SOLA PANTALLA)
-   Calculada contra el viewport height disponible
-   ========================================= */
-.resume-card {
-    display: grid;
-    grid-template-columns: 35% 65%;
-    grid-template-rows: 1fr auto;
-    column-gap: 1.25rem;
-    row-gap: 0.65rem;
-    width: min(80rem, calc(100% - 1.5rem));
-    max-height: calc(100vh - 2.8rem); /* Bloquea la altura al monitor exacto */
-    margin: 0.4rem auto;
-    padding: clamp(0.75rem, 1.2vmin, 1.25rem) clamp(1rem, 1.6vmin, 1.75rem);
-    border: 1px solid var(--slate-200);
-    border-radius: 0.75rem;
-    background: var(--white);
-    box-shadow: var(--shadow);
-    overflow: hidden; /* Garantiza 0 scroll en pantallas de PC */
-    transition: opacity 120ms ease;
-}
-
-.resume-card.is-switching {
-    opacity: 0.25;
-}
-
-/* =========================================
-   COLUMNA IZQUIERDA: Header, Perfil, Edu, Langs
-   ========================================= */
-.col-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 0.5rem;
-    border-right: 1px solid var(--slate-200);
-    padding-right: 1.2rem;
-}
-
-.resume-header h1 {
-    margin: 0;
-    color: var(--slate-900);
-    font-size: clamp(1.15rem, 1rem + 0.6vmin, 1.45rem);
-    font-weight: 850;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-    text-wrap: balance;
-}
-
-.role-badge {
-    display: inline-block;
-    margin: 0.25rem 0 0.35rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-    background: var(--blue-50);
-    color: var(--blue-700);
-    font-size: 0.7rem;
-    font-weight: 750;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-}
-
-.contact-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.12rem;
-    font-style: normal;
-    font-size: 0.76rem;
-    color: var(--slate-600);
-}
-
-.contact-list a {
-    color: inherit;
-    text-decoration: none;
-    width: fit-content;
-}
-
-.contact-list a:hover {
-    color: var(--blue-600);
-    text-decoration: underline;
-}
-
-/* Títulos de sección */
-.section-title {
-    margin: 0 0 0.25rem;
-    padding-left: 0.45rem;
-    border-left: 3px solid var(--blue-600);
-    color: var(--slate-800);
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
-
-.profile-text {
-    margin: 0;
-    color: var(--slate-600);
-    font-size: 0.76rem;
-    line-height: 1.35;
-    text-align: justify;
-    text-wrap: pretty;
-}
-
-.education-content {
-    color: var(--slate-700);
-    font-size: 0.76rem;
-    line-height: 1.3;
-}
-
-.education-content strong {
-    color: var(--slate-900);
-}
-
-/* Tarjetas de Idiomas */
-.languages-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.4rem;
-}
-
-.language-card {
-    display: flex;
-    flex-direction: column;
-    padding: 0.25rem 0.45rem;
-    border: 1px solid var(--slate-200);
-    border-radius: 0.35rem;
-    background: var(--slate-50);
-}
-
-.language-name {
-    margin: 0;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--slate-800);
-}
-
-.language-level {
-    margin: 0.05rem 0 0;
-    font-size: 0.7rem;
-    color: var(--blue-700);
-    font-weight: 600;
-}
-
-/* =========================================
-   COLUMNA DERECHA: Experiencia y Proyectos
-   ========================================= */
-.col-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 0.6rem;
-}
-
-.experience-content {
-    color: var(--slate-700);
-    font-size: 0.76rem;
-}
-
-.experience-meta {
-    font-size: 0.72rem;
-    color: var(--slate-500);
-    font-weight: 500;
-}
-
-.experience-list {
-    margin: 0.25rem 0 0;
-    padding-left: 1.1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
-.experience-list li {
-    line-height: 1.3;
-}
-
-.experience-secondary {
-    margin-top: 0.35rem;
-    padding-top: 0.25rem;
-    border-top: 1px dashed var(--slate-200);
-}
-
-.experience-summary {
-    margin: 0.1rem 0 0;
-    color: var(--slate-600);
-    font-size: 0.74rem;
-    line-height: 1.25;
-}
-
-.projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
-
-.project-title {
-    margin: 0;
-    font-size: 0.78rem;
-    font-weight: 750;
-    color: var(--blue-700);
-}
-
-.project-description {
-    margin: 0.05rem 0 0;
-    font-size: 0.74rem;
-    color: var(--slate-600);
-    line-height: 1.3;
-}
-
-/* =========================================
-   SECCIÓN INFERIOR: Habilidades y Certificados
-   ========================================= */
-.col-bottom {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 48% 50%;
-    gap: 1.25rem;
-    padding-top: 0.55rem;
-    border-top: 1px solid var(--slate-200);
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.3rem 0.65rem;
-}
-
-.skill-category {
-    margin: 0;
-    font-size: 0.68rem;
-    font-weight: 800;
-    color: var(--slate-800);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-}
-
-.skill-text {
-    margin: 0.05rem 0 0;
-    font-size: 0.72rem;
-    color: var(--slate-600);
-    line-height: 1.2;
-}
-
-.certs-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.25rem;
-}
-
-.certs-header-row .section-title {
-    margin: 0;
-}
-
-.certifications-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.cert-group-title {
-    margin: 0 0 0.1rem;
-    font-size: 0.66rem;
-    font-weight: 750;
-    color: var(--blue-700);
-    text-transform: uppercase;
-}
-
-.cert-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-}
-
-.cert-badge {
-    padding: 0.12rem 0.35rem;
-    border: 1px solid var(--slate-200);
-    border-radius: 0.3rem;
-    background: var(--slate-50);
-    color: var(--slate-700);
-    font-size: 0.68rem;
-    font-weight: 550;
-}
-
-.primary-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.18rem 0.5rem;
-    border-radius: 0.35rem;
-    background: var(--blue-600);
-    color: var(--white);
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background-color 150ms ease;
-}
-
-.primary-link:hover {
-    background: var(--blue-700);
-}
-
-/* =========================================
-   RESPONSIVIDAD MÓVIL (iOS / Android / HarmonyOS)
-   En teléfonos debe permitir scroll vertical natural
-   ========================================= */
-@media (max-width: 860px) {
-    html {
-        font-size: 13.5px; /* Tamaño legible y cómodo para pulgar en móviles */
-    }
-
-    .resume-card {
-        grid-template-columns: 1fr;
-        max-height: none; /* En móviles no se corta la pantalla */
-        overflow: visible;
-        width: calc(100% - 1rem);
-        margin: 0.5rem auto;
-        padding: 1rem;
-        gap: 1rem;
-    }
-
-    .col-left {
-        border-right: none;
-        padding-right: 0;
-        border-bottom: 1px solid var(--slate-200);
-        padding-bottom: 1rem;
-    }
-
-    .col-bottom {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .profile-text {
-        text-align: left;
-    }
-}
-
-/* =========================================
-   IMPRESIÓN (1 HOJA FÍSICA EXACTA)
-   ========================================= */
-@media print {
-    @page {
-        size: letter portrait;
-        margin: 6mm 7mm;
-    }
-    
-    html {
-        font-size: 11px;
-    }
-
-    .language-nav {
-        display: none !important;
-    }
-
-    .resume-card {
-        box-shadow: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        max-width: 100%;
-        max-height: none;
-        overflow: visible;
-    }
-}
+            <section class="bottom-certs" aria-labelledby="lbl-certs">
+                <div class="certs-header-row">
+                    <h2 class="section-title" id="lbl-certs"></h2>
+                    <a id="certs-link"
+                       class="primary-link"
+                       href="https://drive.google.com/drive/folders/1aTAoiuF45wiqF9LQGXATr0hYDVl1PITS?usp=sharing"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <span id="lbl-certs-link"></span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
+                <div id="val-certs" class="certifications-list"></div>
+            </section>
+        </footer>
+    </main>
